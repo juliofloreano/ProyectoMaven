@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+	"http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+
+	<constant name="struts.devMode" value="true" />
+
+	<package name="default" namespace="/" 
+		extends="struts-default, json-default, tiles-default" >
+
+	<action name="login" class="action.ActionLogin" method="login">
+		<result name="success">/principal.jsp</result>
+		<result name="error">/error.jsp</result>
+	</action>
+	
+	<action name="logout" class="action.ActionLogin" method="logout">
+			<result name="LOGOUT">/login.jsp</result>
+	</action>
+	
+	
+	<action name="registrando" class="action.ProductoAction" method="registro">
+			<result name="success">/listado.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+	
+	<action name="listando" class="action.ProductoAction" method="listar">
+			<result name="success">/listado.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+		<action name="eliminarProd" class="action.ProductoAction" method="eliminar">
+			<result name="success">/listado.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>	
+		
+		
+		<action name="listandoClientes" class="action.ClienteAction" method="listar">
+			<result name="success">/clientes.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+
+		<action name="registrandoClientes" class="action.ClienteAction" method="registro">
+			<result name="success">/clientes.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+	</package>
+
+</struts>

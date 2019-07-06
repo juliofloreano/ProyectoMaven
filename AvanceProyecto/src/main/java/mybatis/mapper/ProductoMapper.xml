@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.mapper.ProductoMapper">
+
+	<insert id="registrarProducto" parameterType="model.Producto" useGeneratedKeys="true" keyProperty="codigo">
+ 		insert into Producto (nom_pro,pre_pro,stk_pro,des_pro,cat_pro,fec_reg_pro)
+ 		values (#{nombre},#{precio},#{stock},#{descripcion},#{categoria},#{fechareg});
+ 		
+ 	</insert>
+
+	<select id="listadoProducto" resultType="model.Producto">
+		SELECT cod_pro as codigo,
+		    nom_pro as nombre,
+		    pre_pro as precio,
+		    stk_pro as stock,
+		    des_pro as descripcion,
+		    cat_pro as categoria,
+		    fec_reg_pro as fechareg
+		FROM dbventas.producto;
+	</select>
+	
+	<delete id="eliminarProducto" parameterType="int">
+		DELETE FROM producto WHERE cod_pro = #{codigo};
+	</delete>
+</mapper>

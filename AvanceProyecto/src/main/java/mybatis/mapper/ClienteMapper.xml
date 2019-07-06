@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.mapper.ClienteMapper">
+
+	<insert id="registrarCliente" parameterType="model.Cliente" useGeneratedKeys="true" keyProperty="codigo">
+ 		insert into Cliente (nom_cli,ape_cli,email,direccion,telefono,fec_nac_cli)
+ 		values (#{nombre},#{apellidos},#{email},#{direccion},#{telefono},#{fechanac});
+ 		
+ 	</insert>
+
+	<select id="listadoClientes" resultType="model.Cliente">
+		SELECT cod_cli as codigo,
+		    nom_cli as nombre,
+		    ape_cli as apellidos,
+		    email as email,
+		    direccion as direccion,
+		    telefono as telefono,
+		    fec_nac_cli as fechanac
+		FROM dbventas.cliente;
+	</select>
+	
+	<delete id="eliminarProducto" parameterType="int">
+		DELETE FROM producto WHERE cod_pro = #{codigo};
+	</delete>
+</mapper>
